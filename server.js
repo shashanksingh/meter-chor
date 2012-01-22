@@ -5,10 +5,7 @@ function start(route, handle) {
     http.createServer(function(request, response) {
         var pathname = url.parse(request.url).pathname;
         console.log("New Request for ", pathname);
-        route(handle,pathname);
-        response.writeHead(200, {"Content-Type" : "text/plain"});
-        response.write("Hello World");
-        response.end();
+        route(handle,pathname,response);
     }).listen(8000);
 
 console.log("Server has started.");

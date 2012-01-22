@@ -1,10 +1,28 @@
-function upload() {
-console.log("inside upload");
+var exec = require("child_process").exec;
+
+function start(response) {
+  console.log("Request handler 'start' was called.");
+  var content = "empty";
+
+  exec("ls -lah", function (error, stdout, stderr) {
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write(stdout);
+    response.end();
+  });
+
 }
 
-function start() {
-console.log("inside start");
+function upload(response) {
+    console.log("inside upload");
+    response.writeHead(200, {"Content-Type":"text/plain"});
+    response.write("upload");
+    response.end();
 }
+
+
+//function start() {
+//console.log("inside start");
+//}
 
 exports.upload = upload;
 exports.start = start;
