@@ -16,7 +16,7 @@ function start(response) {
     '</html>';
 
     exec("ls -lah", function (error, stdout, stderr) {
-        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.writeHead(200, {"Content-Type": "text/html"});
         response.write(body);
         response.end();
   });
